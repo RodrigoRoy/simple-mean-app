@@ -1,0 +1,28 @@
+<!--Script para mostrar mensajes de error en los campos del formulario-->
+<script type="text/ng-template" id="error-messages">
+  <span ng-message="required" class="help-block">Este campo es obligatorio.</span>
+  <span ng-message="maxlength" class="help-block">La información excede el límite de longitud permitido.</span>
+  <span ng-message="minlength" class="help-block">La información es demasiado corta.</span>
+  <span ng-message="date" class="help-block">La fecha es incorrecta.</span>
+  <span ng-message="url" class="help-block">Se requiere la dirección completa de internet (comúnmente iniciando con "http://").</span>
+  <span ng-message="pattern" class="help-block">El formato de este campo es incorrecto.</span>
+</script>
+
+<!-- Formulario para agregar un nuevo evento a la base de datos -->
+<form name="eventoForm" id="eventoForm" role="form" novalidate>
+  <!-- TITULO DEL EVENTO -->
+  <div class="form-group" ng-class="{'has-error': eventoForm.titulo.$dirty && eventoForm.titulo.$invalid}">
+    <label class="control-label" for="titulo">Título</label>
+    <input class="form-control" type="text" name="titulo" id="titulo" ng-model="titulo" ng-maxlength="20" ng-trim required>
+    <div ng-messages="eventoForm.titulo.$error" ng-show="eventoForm.titulo.$dirty && eventoForm.titulo.$invalid"><div ng-messages-include="error-messages"></div></div>
+  </div>
+
+  <!-- DESCRIPCION DEL EVENTO -->
+  <div class="form-group" ng-class="{'has-error': eventoForm.descripcion.$dirty && eventoForm.descripcion.$invalid}">
+    <label class="control-label" for="descripcion">Descripción</label>
+    <textarea class="form-control" rows="4" name="descripcion" id="descripcion" ng-model="descripcion" ng-maxlength="100" ng-trim></textarea>
+    <div ng-messages="eventoForm.descripcion.$error" ng-show="eventoForm.descripcion.$dirty && eventoForm.descripcion.$invalid"><div ng-messages-include="error-messages"></div></div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="enviar()">Agregar evento</button>
+</form>

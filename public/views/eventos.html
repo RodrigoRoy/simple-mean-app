@@ -1,0 +1,12 @@
+<div class="jumbotron text-center">
+	<h1>Eventos</h1>
+
+	<p>{{texto}}</p>
+</div>
+
+<ul class="list-unstyled">
+	<li ng-repeat="evento in eventos">
+		<strong>Título:</strong> {{evento.titulo}}
+		<strong>Descripción:</strong> {{evento.contenido}}
+	</li>
+</ul>

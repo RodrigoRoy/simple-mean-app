@@ -1,0 +1,11 @@
+{
+  "name": "mean-app",
+  "version": "0.1",
+  "dependencies": {
+    "bootstrap": "latest",
+    "angular": "latest",
+    "angular-route": "latest",
+    "angular-messages": "latest",
+    "jquery": "latest"
+  }
+}
