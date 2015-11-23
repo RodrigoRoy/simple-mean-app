@@ -15,10 +15,10 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			controller: 'EventosController'
 		})
 
-		// AGREGAR EVENTO
+		// AGREGAR/EDITAR EVENTO
 		.when('/eventos/nuevo', {
 			templateUrl: 'views/formulario_evento.html',
-			controller: 'AgregarEventoController'
+			controller: 'AgregarEditarEventoController'
 		})
 
 		// RUTAS INVÁLIDAS (no descritas previamente)

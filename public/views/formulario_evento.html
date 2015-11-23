@@ -24,5 +24,6 @@
     <div ng-messages="eventoForm.descripcion.$error" ng-show="eventoForm.descripcion.$dirty && eventoForm.descripcion.$invalid"><div ng-messages-include="error-messages"></div></div>
   </div>
 
-  <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="enviar()">Agregar evento</button>
+  <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="enviar()" ng-show="!eventoID">Agregar evento</button>
+  <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="editar()" ng-show="eventoID">Editar evento</button>
 </form>

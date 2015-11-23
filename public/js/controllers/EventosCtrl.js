@@ -1,7 +1,7 @@
 /*
 Se encarga de obtener y manipular los datos de todos los eventos existentes en la base de datos.
 */
-angular.module('EventosCtrl', []).controller('EventosController', function($scope, Evento){
+angular.module('EventosCtrl', []).controller('EventosController', function($scope, $location, $cookies, Evento){
 	$scope.texto = 'Hola eventos';
 	$scope.eventos = [];
 	
@@ -25,5 +25,10 @@ angular.module('EventosCtrl', []).controller('EventosController', function($scop
 			}, function(res){
 				alert('Error al eliminar de la base. Intenta nuevamente.');
 			});
+	};
+
+	$scope.editar = function(eventoID){
+		$cookies.put('eventoID', eventoID);
+		$location.url('/eventos/nuevo'); // Redirigir a la página de edición
 	};
 });

@@ -9,12 +9,13 @@ Los componentes principales de la aplicación son:
 angular.module('meanApp', [
 	'ngRoute', // Front end router
 	'ngMessages',  // Mensaje de validación en formularios
+	'ngCookies', // Manejo de cookies del navegador
 	
 	'appRoutes', // Rutas y controladores
 
 	'MainCtrl', // Controladores creados
 	'EventosCtrl', 
-	'AgregarEventoCtrl', 
+	'AgregarEditarEventoCtrl', 
 
 	'EventoService' // Peticiones a la base de datos (Factories)
 ]);
