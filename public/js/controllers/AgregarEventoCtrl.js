@@ -12,7 +12,7 @@ angular.module('AgregarEventoCtrl', []).controller('AgregarEventoController', fu
 		Evento.create(newEvento)
 			.then(function(res){ // callback para petición exitosa
 				alert('Evento agregado a la base de datos.');
-				$location.url('/evento'); // Redirigir a la página de edición
+				$location.url('/eventos'); // Redirigir a la página de edición
 			}, function(res){ // callback para cuando hay un error
 				alert('Hubo un error de conexión. Por favor vuelve a intentarlo.');
 			});

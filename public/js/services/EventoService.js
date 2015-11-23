@@ -10,29 +10,29 @@ angular.module('EventoService', []).factory('Evento', ['$http', function($http){
 	return {
 		// Obtener todos los eventos
 		all: function(){
-			return $http.get('/eventosapi');
+			return $http.get('/api/eventos');
 		},
 
 		// Obtener un evento particular (mediante el ID)
 		get: function(eventID){
-			return $http.get('/eventosapi/' + eventID);
+			return $http.get('/api/eventos/' + eventID);
 		},
 
 		// Crear un nuevo evento
 		// Recibe como parámetro la información del evento
 		create: function(eventData){
-			return $http.post('/eventosapi', eventData);
+			return $http.post('/api/eventos', eventData);
 		},
 
 		// Actualiza la información de un evento (mediante el ID)
 		// Recibe el ID del evento a modificar y la nueva información del evento
 		update: function(eventID, eventData){
-			return $http.put('/eventosapi/' + eventID, eventData);
+			return $http.put('/api/eventos/' + eventID, eventData);
 		},
 
 		// Elimina un evento (mediante el ID)
 		delete: function(eventID){
-			return $http.delete('/eventosapi/' + eventID);
+			return $http.delete('/api/eventos/' + eventID);
 		}
 	}
 }]);

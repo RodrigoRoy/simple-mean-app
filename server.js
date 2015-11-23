@@ -27,7 +27,7 @@ app.use(express.static(__dirname + '/public')); // establece ubicación de archi
 
 // RUTAS ===================================================
 var eventos = require('./app/eventos_api'); // API para Eventos de la base de datos
-app.use('/eventosapi', eventos); // usar el API desde la ruta "/eventosapi"
+app.use('/api/eventos', eventos); // usar el API desde la ruta "/api/eventos"
 
 require('./app/routes')(app); // pasar a la aplicación las demás rutas a utilizar
 

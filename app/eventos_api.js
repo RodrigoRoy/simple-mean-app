@@ -4,11 +4,11 @@ Permite obtener datos en formato JSON mediante verbos HTTP (GET, POST, PUT, DELE
 
 Las rutas aqui definidas son un router que le antecede una ruta general de uso (ver server.js)
 Por ejemplo:
-GET    http://localhost:8080/eventosapi/
-POST   http://localhost:8080/eventosapi/
-GET    http://localhost:8080/eventosapi/1234567890
-PUT    http://localhost:8080/eventosapi/1234567890
-DELETE http://localhost:8080/eventosapi/1234567890
+GET    http://localhost:8080/api/eventos
+POST   http://localhost:8080/api/eventos
+GET    http://localhost:8080/api/eventos/1234567890
+PUT    http://localhost:8080/api/eventos/1234567890
+DELETE http://localhost:8080/api/eventos/1234567890
 */
 
 // Dependencias

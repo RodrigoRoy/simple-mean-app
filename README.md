@@ -5,8 +5,7 @@ Este repositorio sirve como plantilla inicial para otros proyectos similares med
 ## Requisitos
 - [Node](https://nodejs.org) instalado
 - [MongoDB](https://www.mongodb.org/) instalado
-
-**Nota:** Se emplea una base de datos (de MongoDB evidentemente) llamada "*mean-app*", corriendo localmente en el puerto por default de MongoDB (21017).
+- [Bower](http://bower.io/) instalado: ``npm install -g bower``
 
 ## Instalación
 1. Descargar el repositorio

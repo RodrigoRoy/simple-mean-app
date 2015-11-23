@@ -16,4 +16,14 @@ angular.module('EventosCtrl', []).controller('EventosController', function($scop
 		/*.success(function(data){ // manejo asincrono de la respuesta
 			$scope.eventos = data; // asignación a variable del controlador
 		});*/
+
+	$scope.eliminar = function(eventoID){
+		Evento.delete(eventoID)
+			.then(function(res){
+				alert('Evento eliminado de la base de datos.');
+				location.reload();
+			}, function(res){
+				alert('Error al eliminar de la base. Intenta nuevamente.');
+			});
+	};
 });
