@@ -3,18 +3,20 @@ Archivo de configuración y manejo del servidor (mediante Node.js)
 */
 
 // MÓDULOS =================================================
-var express        = require('express');
-var app            = express();
-var mongoose       = require('mongoose');
-var bodyParser     = require('body-parser');
+var express        = require('express'); // llamar a express
+var app            = express(); // definir la aplicación usando express
+var mongoose       = require('mongoose'); // para trabajar con la base de datos
+var bodyParser     = require('body-parser'); // obtener body-parser
 var methodOverride = require('method-override');
+var morgan         = require('morgan'); // usado para ver peticiones (requests)
 
 // CONFIGURACIÓN ===========================================
 	
 // archivos de configuración
-var db = require('./config/db'); // carga la ruta de la base de datos
-
 var port = process.env.PORT || 8080; // establecer puerto
+
+// base de datos
+var db = require('./config/db'); // carga la ruta de la base de datos
 mongoose.connect(db.url); // conectar a base de datos mongoDB
 
 // permite obtener datos de los parámetros del cuerpo/body (POST)
@@ -26,8 +28,27 @@ app.use(methodOverride('X-HTTP-Method-Override')); // sobreescribe con el encabe
 app.use(express.static(__dirname + '/public')); // establece ubicación de archivos estáticos. /public/img será /img para los usuarios
 
 // RUTAS ===================================================
+
+// configurar la aplicación para manejar peticiones CORS (Cross-origin resource sharing requests)
+app.use(function(req, res, next){
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
+	next();
+});
+
+// log de todas las peticiones (request) en consola
+app.use(morgan('dev'));
+
+// RUTAS PARA EL API
+
+var usuarios = require('./app/usuarios_api'); // API para Usuarios de la base de datos
+app.use('/api/usuarios', usuarios); // usar el API desde la ruta "/api/usuarios"
+
 var eventos = require('./app/eventos_api'); // API para Eventos de la base de datos
 app.use('/api/eventos', eventos); // usar el API desde la ruta "/api/eventos"
+
+// REGISTRAR LAS DEMÁS RUTAS
 
 require('./app/routes')(app); // pasar a la aplicación las demás rutas a utilizar
 

@@ -54,7 +54,7 @@ router.route('/:evento_id')
             if(err)
                 res.send(err);
             res.json(evento);
-        })
+        });
     })
 
     // Actualizar un evento en particular (mediante el ID)
@@ -62,8 +62,11 @@ router.route('/:evento_id')
         Evento.findById(req.params.evento_id, function(err, evento){
             if(err)
                 res.send(err);
-            evento.titulo = req.body.titulo;
-            evento.contenido = req.body.contenido;
+            
+            if(req.body.titulo)
+                evento.titulo = req.body.titulo;
+            if(req.body.contenido)
+                evento.contenido = req.body.contenido;
 
             evento.save(function(err){
                 if(err)
