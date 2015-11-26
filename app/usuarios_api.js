@@ -16,10 +16,47 @@ var express = require('express');
 var router = express.Router(); // para modularizar las rutas
 var Usuario = require('./models/Usuario'); // Modelo de la colección "Usuarios"
 
+var jwt = require('jsonwebtoken'); // manejo de autentificación por JSON Web Token
+var secret = require('../config/jwt');
+
 // Función a realizar siempre que se utilize esta API
 router.use(function(req, res, next){
-    console.log('Usando el API de Usuarios.');
-    next(); // Pasar el control de las rutas a la siguiente coincidencia
+    // console.log('Usando el API de Usuarios.');
+    
+    var token = req.body.token || req.param('token') || req.headers['x-access-token'];
+
+    //decodificar token
+    if(token){
+        // verifica con secret y checa expiración
+        jwt.verify(token, secret, function(err, decoded){
+            if(err){
+                return res.status(403).send({
+                    success: false,
+                    message: 'Error en autentificación de token.'
+                });
+            }
+            else{
+                // si todo está bien, guardar a petición (request) para usar en otras rutas
+                req.decoded = decoded;
+                //console.log('req.decoded: ', req.decoded);
+
+                next(); // Pasar el control de las rutas a la siguiente coincidencia
+            }
+        });
+    }
+    else{
+        // si no hay token
+        // devolver respuesta HTTP 403 (acceso prohibido) y un mensaje de error
+        return res.status(403).send({
+            success: false,
+            message: 'No hay token.'
+        });
+    }
+});
+
+// obtener la información del usuario autentificado
+router.get('/me', function(req, res){
+    res.send(req.decoded);
 });
 
 // En peticiones a la raiz del API

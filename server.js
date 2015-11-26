@@ -27,6 +27,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-f
 app.use(methodOverride('X-HTTP-Method-Override')); // sobreescribe con el encabezado X-HTTP-Method-Override en petición. Simula DELETE/PUT
 app.use(express.static(__dirname + '/public')); // establece ubicación de archivos estáticos. /public/img será /img para los usuarios
 
+//var superSecret = 'allthismomentswillbelostintimeliketearsinrain';
+
 // RUTAS ===================================================
 
 // configurar la aplicación para manejar peticiones CORS (Cross-origin resource sharing requests)
@@ -41,6 +43,9 @@ app.use(function(req, res, next){
 app.use(morgan('dev'));
 
 // RUTAS PARA EL API
+
+var autentificacion = require('./app/authentication'); // API para autentificación
+app.use('/api/', autentificacion); // usar el API desde la ruta "/api/authenticate"
 
 var usuarios = require('./app/usuarios_api'); // API para Usuarios de la base de datos
 app.use('/api/usuarios', usuarios); // usar el API desde la ruta "/api/usuarios"
