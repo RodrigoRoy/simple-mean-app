@@ -1,0 +1,13 @@
+/* fadeIn es una animación contenida en animate.css */
+.ng-enter {
+	-webkit-animation: fadeIn 0.5s ease;
+	-moz-animation: fadeIn 0.5s ease;
+	animation: fadeIn 0.5s ease;
+}
+
+/* fadeOut es una animación contenida en animate.css */
+/*.ng-leave {
+	-webkit-animation: fadeOut 0.5s linear;
+	-moz-animation: fadeOut 0.5s linear;
+	animation: fadeOut 0.5s both linear;
+}*/

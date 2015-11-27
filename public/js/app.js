@@ -10,6 +10,7 @@ angular.module('meanApp', [
 	'ngRoute', // Front end router
 	'ngMessages',  // Mensaje de validación en formularios
 	'ngCookies', // Manejo de cookies del navegador
+	'ngAnimate', //Animaciones CSS
 	
 	'appRoutes', // Rutas y controladores
 

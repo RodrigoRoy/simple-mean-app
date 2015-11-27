@@ -26,5 +26,6 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			redirectTo: "/"
 		});
 
+	// establecer el uso de URLS modernas (sin #)
 	$locationProvider.html5Mode(true);
 }]);
