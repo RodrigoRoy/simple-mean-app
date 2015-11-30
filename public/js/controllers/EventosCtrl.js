@@ -10,13 +10,18 @@ angular.module('EventosCtrl', []).controller('EventosController', function($scop
 		.then(function(res){ // callback para petición exitosa
 			$scope.eventos = res.data;
 		}, function(res){ // callback para petición cuando hay error
-			console.log(res);
+			alert('Error de conexión con la base de datos.\n Revise la conexión a internet e intente nuevamente.');
 		});
 		// También es válido usar la llamada asincrona "success":
 		/*.success(function(data){ // manejo asincrono de la respuesta
 			$scope.eventos = data; // asignación a variable del controlador
 		});*/
 
+	$scope.editar = function(eventoID){
+		$cookies.put('eventoID', eventoID);
+		$location.url('/eventos/nuevo'); // Redirigir a la página de edición
+	};
+	
 	$scope.eliminar = function(eventoID){
 		Evento.delete(eventoID)
 			.then(function(res){
@@ -25,10 +30,5 @@ angular.module('EventosCtrl', []).controller('EventosController', function($scop
 			}, function(res){
 				alert('Error al eliminar de la base. Intenta nuevamente.');
 			});
-	};
-
-	$scope.editar = function(eventoID){
-		$cookies.put('eventoID', eventoID);
-		$location.url('/eventos/nuevo'); // Redirigir a la página de edición
 	};
 });

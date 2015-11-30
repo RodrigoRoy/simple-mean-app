@@ -13,15 +13,21 @@
   <!-- TITULO DEL EVENTO -->
   <div class="form-group" ng-class="{'has-error': eventoForm.titulo.$dirty && eventoForm.titulo.$invalid}">
     <label class="control-label" for="titulo">Título</label>
-    <input class="form-control" type="text" name="titulo" id="titulo" ng-model="titulo" ng-maxlength="20" ng-trim required>
+    <input class="form-control" type="text" name="titulo" id="titulo" ng-model="titulo" ng-maxlength="150" ng-trim required>
     <div ng-messages="eventoForm.titulo.$error" ng-show="eventoForm.titulo.$dirty && eventoForm.titulo.$invalid"><div ng-messages-include="error-messages"></div></div>
   </div>
 
   <!-- DESCRIPCION DEL EVENTO -->
   <div class="form-group" ng-class="{'has-error': eventoForm.descripcion.$dirty && eventoForm.descripcion.$invalid}">
     <label class="control-label" for="descripcion">Descripción</label>
-    <textarea class="form-control" rows="4" name="descripcion" id="descripcion" ng-model="descripcion" ng-maxlength="100" ng-trim></textarea>
+    <textarea class="form-control" rows="2" name="descripcion" id="descripcion" ng-model="descripcion" ng-maxlength="250" ng-trim></textarea>
     <div ng-messages="eventoForm.descripcion.$error" ng-show="eventoForm.descripcion.$dirty && eventoForm.descripcion.$invalid"><div ng-messages-include="error-messages"></div></div>
+  </div>
+
+  <div class="form-group" ng-class="{'has-error': eventoForm.contenidoHTML.$dirty && eventoForm.contenidoHTML.$invalid}">
+    <label class="control-label" for="contenidoHTML">Información</label>
+    <div text-angular ng-model="contenidoHTML" ta-text-editor-class="form-control" ta-html-editor-class="form-control" id="contenidoHTML" required></div>
+    <div ng-messages="eventoForm.contenidoHTML.$error" ng-show="eventoForm.contenidoHTML.$dirty && eventoForm.contenidoHTML.$invalid"><div ng-messages-include="error-messages"></div></div>
   </div>
 
   <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="enviar()" ng-show="!eventoID">Agregar evento</button>

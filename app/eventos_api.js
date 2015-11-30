@@ -37,7 +37,8 @@ router.route('/')
     .post(function(req, res){
         var evento = new Evento();
         evento.titulo = req.body.titulo;
-        evento.contenido = req.body.contenido;
+        evento.descripcion = req.body.descripcion;
+        evento.contenidoHTML = req.body.contenidoHTML;
 
         evento.save(function(err){
             if(err)
@@ -65,8 +66,10 @@ router.route('/:evento_id')
             
             if(req.body.titulo)
                 evento.titulo = req.body.titulo;
-            if(req.body.contenido)
-                evento.contenido = req.body.contenido;
+            if(req.body.descripcion)
+                evento.descripcion = req.body.descripcion;
+            if(req.body.contenidoHTML)
+                evento.contenidoHTML = req.body.contenidoHTML;
 
             evento.save(function(err){
                 if(err)

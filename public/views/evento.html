@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3>
+			{{titulo}} 
+			<button class="btn btn-default btn-xs" ng-click="editar()"><i class="fa fa-pencil-square-o"></i> Editar</button> 
+			<button class="btn btn-default btn-xs" ng-click="eliminar()"><i class="fa fa-trash"></i> Eliminar</button>
+		</h3>
+	</div>
+
+	<div class="panel-body">
+		<p><span ng-bind-html="contenidoHTML"></span></p>
+	</div>
+</div>
+
+<a class="btn btn-default" href="/eventos" role="button"><i class="fa fa-reply"></i> Regresar</a>

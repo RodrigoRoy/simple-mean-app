@@ -8,8 +8,9 @@ var Schema = mongoose.Schema; // "Modelo" de la colección
 
 // Definición del esquema "Evento", incluyendo nombre del campo y el tipo de dato (key: value_type)
 var EventoSchema = new Schema({
-	titulo : String,
-    contenido: String,
+	titulo : {type: String, required: true},
+    descripcion: String,
+    contenidoHTML: {type: String, required: true},
     fechaCreacion: {type: Date, default: Date.now}
 });
 

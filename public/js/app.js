@@ -11,11 +11,15 @@ angular.module('meanApp', [
 	'ngMessages',  // Mensaje de validación en formularios
 	'ngCookies', // Manejo de cookies del navegador
 	'ngAnimate', //Animaciones CSS
+	'ngSanitize', // Mostrar HTML de manera segura
 	
 	'appRoutes', // Rutas y controladores
 
+	'textAngular', // 3rd party WYSWYG HTML text editor
+
 	'MainCtrl', // Controladores creados
 	'EventosCtrl', 
+	'EventoCtrl', 
 	'AgregarEditarEventoCtrl', 
 
 	'EventoService' // Peticiones a la base de datos (Factories)

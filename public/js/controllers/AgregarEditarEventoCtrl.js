@@ -9,7 +9,8 @@ angular.module('AgregarEditarEventoCtrl', []).controller('AgregarEditarEventoCon
 		Evento.get($scope.eventoID)
 			.then(function(res){ // callback para petición exitosa
 				$scope.titulo = res.data.titulo;
-				$scope.descripcion = res.data.contenido;
+				$scope.descripcion = res.data.descripcion;
+				$scope.contenidoHTML = res.data.contenidoHTML;
 				$cookies.remove('eventoID'); // Eliminar cookie
 			}, function(res){ // callback para cuando hay un error
 				alert('Hubo un error de conexión. Serás redireccionado a la página de eventos.');
@@ -22,7 +23,8 @@ angular.module('AgregarEditarEventoCtrl', []).controller('AgregarEditarEventoCon
 		// Objeto con la información a enviar
 		var newEvento = {
 			'titulo': $scope.titulo,
-			'contenido': $scope.descripcion
+			'descripcion': $scope.descripcion,
+			'contenidoHTML': $scope.contenidoHTML
 		};
 		// Enviar información a través del factory Evento
 		Evento.create(newEvento)
@@ -38,7 +40,8 @@ angular.module('AgregarEditarEventoCtrl', []).controller('AgregarEditarEventoCon
 	$scope.editar = function(){
 		var updateData = { // objeto con la información del formulario
 			'titulo': $scope.titulo,
-			'contenido': $scope.descripcion
+			'descripcion': $scope.descripcion,
+			'contenidoHTML': $scope.contenidoHTML
 		};
 		Evento.update($scope.eventoID, updateData)
 			.then(function(res){ // callback para petición exitosa

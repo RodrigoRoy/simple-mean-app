@@ -21,6 +21,12 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			controller: 'AgregarEditarEventoController'
 		})
 
+		// VER EVENTO PARTICULAR
+		.when('/eventos/:eventoID', {
+			templateUrl: 'views/evento.html',
+			controller: 'EventoController'
+		})
+
 		// RUTAS INVÁLIDAS (no descritas previamente)
 		.otherwise({
 			redirectTo: "/"
